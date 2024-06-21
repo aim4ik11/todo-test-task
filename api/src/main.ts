@@ -18,6 +18,11 @@ async function bootstrap() {
     })
   );
 
-  await app.listen(8080);
+  const port = process.env.PORT || 8080;
+  await app.listen(port);
+
+  const url = await app.getUrl();
+  console.log(`NestJS application is running on: ${url}`);
 }
+
 bootstrap();
