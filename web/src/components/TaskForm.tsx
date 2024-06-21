@@ -17,6 +17,8 @@ const TaskForm = ({ addTask, setError }: TaskFormProps) => {
 
     if (!newTaskTitle || !newTaskPriority) 
       return setError("Title and priority must be set");
+    if (newTaskPriority < 1 || newTaskPriority > 5)
+      return setError("Priority must be in bounds between 1 and 5");
     
     const { data, error } = await createTask({
       title: newTaskTitle,
